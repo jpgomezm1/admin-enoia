@@ -9,7 +9,8 @@ import {
   UserCog, 
   Menu, 
   X,
-  LogOut
+  LogOut,
+  Layers
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -26,6 +27,7 @@ const Sidebar = () => {
   const navigation = [
     { name: 'Dashboard', path: '/', icon: LayoutDashboard },
     { name: 'Clases', path: '/clases', icon: BookOpen },
+    { name: 'Tipos de Clase', path: '/tipos-clase', icon: Layers },
     { name: 'Reservas', path: '/reservas', icon: CalendarDays },
     { name: 'Clientes', path: '/clientes', icon: Users },
     { name: 'Instructores', path: '/instructores', icon: UserCog },

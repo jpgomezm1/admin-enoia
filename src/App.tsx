@@ -10,6 +10,7 @@ import Clases from "./pages/Clases";
 import Reservas from "./pages/Reservas";
 import Clientes from "./pages/Clientes";
 import Instructores from "./pages/Instructores";
+import TiposClase from "./pages/TiposClase";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/reservas" element={<Layout><Reservas /></Layout>} />
           <Route path="/clientes" element={<Layout><Clientes /></Layout>} />
           <Route path="/instructores" element={<Layout><Instructores /></Layout>} />
+          <Route path="/tipos-clase" element={<Layout><TiposClase /></Layout>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

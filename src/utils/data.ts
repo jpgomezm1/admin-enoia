@@ -1,15 +1,62 @@
-
 // Mock data for Enoia Barre Studio admin dashboard
 
-// Class types
-export const classTypes = [
-  "Barre Clásico",
-  "Barre Flow",
-  "Barre Intenso",
-  "Barre Sculpt",
-  "Stretch & Relax",
-  "Prenatal Barre",
+// Class types with expanded properties
+export interface ClassType {
+  id: number;
+  name: string;
+  description: string;
+  intensity: "Baja" | "Media" | "Fuerte";
+  visible: boolean;
+}
+
+// Class types with full details
+export const classTypeDetails: ClassType[] = [
+  {
+    id: 1,
+    name: "Barre Clásico",
+    description: "Clase tradicional de barre enfocada en técnica y postura.",
+    intensity: "Media",
+    visible: true,
+  },
+  {
+    id: 2,
+    name: "Barre Flow",
+    description: "Movimientos fluidos inspirados en yoga y danza contemporánea.",
+    intensity: "Media",
+    visible: true,
+  },
+  {
+    id: 3,
+    name: "Barre Intenso",
+    description: "Versión de alta intensidad con intervalos de cardio.",
+    intensity: "Fuerte",
+    visible: true,
+  },
+  {
+    id: 4,
+    name: "Barre Sculpt",
+    description: "Enfoque en tonificación y definición muscular.",
+    intensity: "Media",
+    visible: true,
+  },
+  {
+    id: 5,
+    name: "Stretch & Relax",
+    description: "Clase enfocada en flexibilidad y relajación muscular.",
+    intensity: "Baja",
+    visible: true,
+  },
+  {
+    id: 6,
+    name: "Prenatal Barre",
+    description: "Adaptada para embarazadas, fortalece y mantiene flexibilidad.",
+    intensity: "Baja",
+    visible: true,
+  },
 ];
+
+// Basic class types (for dropdowns, etc)
+export const classTypes = classTypeDetails.map(ct => ct.name);
 
 // Intensity levels
 export const intensityLevels = ["Baja", "Media", "Fuerte"];
