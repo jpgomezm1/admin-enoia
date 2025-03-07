@@ -58,6 +58,14 @@ export const instructors = [
   },
 ];
 
+// Helper function to create dates properly
+const createDate = (daysOffset: number, hours: number, minutes: number): Date => {
+  const date = new Date();
+  date.setDate(date.getDate() + daysOffset);
+  date.setHours(hours, minutes, 0, 0);
+  return date;
+};
+
 // Mock classes
 export const classes = [
   {
@@ -67,7 +75,7 @@ export const classes = [
     intensity: "Media",
     instructor: instructors[0],
     maxCapacity: 12,
-    date: new Date(new Date().setHours(10, 0, 0, 0)), // Today at 10:00
+    date: createDate(0, 10, 0), // Today at 10:00
     attendees: 8,
   },
   {
@@ -77,7 +85,7 @@ export const classes = [
     intensity: "Media",
     instructor: instructors[2],
     maxCapacity: 10,
-    date: new Date(new Date().setHours(17, 30, 0, 0)), // Today at 17:30
+    date: createDate(0, 17, 30), // Today at 17:30
     attendees: 10,
   },
   {
@@ -87,7 +95,7 @@ export const classes = [
     intensity: "Baja",
     instructor: instructors[1],
     maxCapacity: 15,
-    date: new Date(new Date().setHours(19, 0, 0, 0)), // Today at 19:00
+    date: createDate(0, 19, 0), // Today at 19:00
     attendees: 7,
   },
   {
@@ -97,7 +105,7 @@ export const classes = [
     intensity: "Fuerte",
     instructor: instructors[4],
     maxCapacity: 12,
-    date: new Date(new Date().setDate(new Date().getDate() + 1)).setHours(9, 0, 0, 0), // Tomorrow at 9:00
+    date: createDate(1, 9, 0), // Tomorrow at 9:00
     attendees: 6,
   },
   {
@@ -107,7 +115,7 @@ export const classes = [
     intensity: "Baja",
     instructor: instructors[3],
     maxCapacity: 8,
-    date: new Date(new Date().setDate(new Date().getDate() + 1)).setHours(12, 0, 0, 0), // Tomorrow at 12:00
+    date: createDate(1, 12, 0), // Tomorrow at 12:00
     attendees: 4,
   },
   {
@@ -117,10 +125,17 @@ export const classes = [
     intensity: "Media",
     instructor: instructors[0],
     maxCapacity: 12,
-    date: new Date(new Date().setDate(new Date().getDate() + 1)).setHours(18, 0, 0, 0), // Tomorrow at 18:00
+    date: createDate(1, 18, 0), // Tomorrow at 18:00
     attendees: 9,
   },
 ];
+
+// Helper function for class history dates
+const createHistoryDate = (daysAgo: number): Date => {
+  const date = new Date();
+  date.setDate(date.getDate() - daysAgo);
+  return date;
+};
 
 // Mock clients
 export const clients = [
@@ -130,8 +145,8 @@ export const clients = [
     email: "maria.lopez@gmail.com",
     phone: "+34 612 345 678",
     history: [
-      { classId: 1, date: new Date(new Date().setDate(new Date().getDate() - 7)), className: "Barre Clásico", instructor: "Valentina Ortega" },
-      { classId: 3, date: new Date(new Date().setDate(new Date().getDate() - 2)), className: "Stretch & Relax", instructor: "Carmen Díaz" },
+      { classId: 1, date: createHistoryDate(7), className: "Barre Clásico", instructor: "Valentina Ortega" },
+      { classId: 3, date: createHistoryDate(2), className: "Stretch & Relax", instructor: "Carmen Díaz" },
     ],
   },
   {
@@ -140,8 +155,8 @@ export const clients = [
     email: "ana.garcia@hotmail.com",
     phone: "+34 623 456 789",
     history: [
-      { classId: 2, date: new Date(new Date().setDate(new Date().getDate() - 5)), className: "Barre Flow", instructor: "Lucía Fernández" },
-      { classId: 4, date: new Date(new Date().setDate(new Date().getDate() - 3)), className: "Barre Intenso", instructor: "Daniel Torres" },
+      { classId: 2, date: createHistoryDate(5), className: "Barre Flow", instructor: "Lucía Fernández" },
+      { classId: 4, date: createHistoryDate(3), className: "Barre Intenso", instructor: "Daniel Torres" },
     ],
   },
   {
@@ -150,7 +165,7 @@ export const clients = [
     email: "elena.martinez@yahoo.es",
     phone: "+34 634 567 890",
     history: [
-      { classId: 5, date: new Date(new Date().setDate(new Date().getDate() - 14)), className: "Prenatal Barre", instructor: "Sofia Martín" },
+      { classId: 5, date: createHistoryDate(14), className: "Prenatal Barre", instructor: "Sofia Martín" },
     ],
   },
   {
@@ -159,8 +174,8 @@ export const clients = [
     email: "laura.sanchez@gmail.com",
     phone: "+34 645 678 901",
     history: [
-      { classId: 1, date: new Date(new Date().setDate(new Date().getDate() - 10)), className: "Barre Clásico", instructor: "Valentina Ortega" },
-      { classId: 6, date: new Date(new Date().setDate(new Date().getDate() - 4)), className: "Barre Sculpt", instructor: "Valentina Ortega" },
+      { classId: 1, date: createHistoryDate(10), className: "Barre Clásico", instructor: "Valentina Ortega" },
+      { classId: 6, date: createHistoryDate(4), className: "Barre Sculpt", instructor: "Valentina Ortega" },
     ],
   },
   {
@@ -169,8 +184,8 @@ export const clients = [
     email: "patricia.gomez@gmail.com",
     phone: "+34 656 789 012",
     history: [
-      { classId: 2, date: new Date(new Date().setDate(new Date().getDate() - 6)), className: "Barre Flow", instructor: "Lucía Fernández" },
-      { classId: 3, date: new Date(new Date().setDate(new Date().getDate() - 3)), className: "Stretch & Relax", instructor: "Carmen Díaz" },
+      { classId: 2, date: createHistoryDate(6), className: "Barre Flow", instructor: "Lucía Fernández" },
+      { classId: 3, date: createHistoryDate(3), className: "Stretch & Relax", instructor: "Carmen Díaz" },
     ],
   },
   {
@@ -179,7 +194,7 @@ export const clients = [
     email: "cristina.rodriguez@outlook.com",
     phone: "+34 667 890 123",
     history: [
-      { classId: 4, date: new Date(new Date().setDate(new Date().getDate() - 7)), className: "Barre Intenso", instructor: "Daniel Torres" },
+      { classId: 4, date: createHistoryDate(7), className: "Barre Intenso", instructor: "Daniel Torres" },
     ],
   },
   {
@@ -188,8 +203,8 @@ export const clients = [
     email: "beatriz.fernandez@gmail.com",
     phone: "+34 678 901 234",
     history: [
-      { classId: 6, date: new Date(new Date().setDate(new Date().getDate() - 9)), className: "Barre Sculpt", instructor: "Valentina Ortega" },
-      { classId: 1, date: new Date(new Date().setDate(new Date().getDate() - 2)), className: "Barre Clásico", instructor: "Valentina Ortega" },
+      { classId: 6, date: createHistoryDate(9), className: "Barre Sculpt", instructor: "Valentina Ortega" },
+      { classId: 1, date: createHistoryDate(2), className: "Barre Clásico", instructor: "Valentina Ortega" },
     ],
   },
   {
@@ -198,7 +213,7 @@ export const clients = [
     email: "raquel.diaz@yahoo.es",
     phone: "+34 689 012 345",
     history: [
-      { classId: 5, date: new Date(new Date().setDate(new Date().getDate() - 11)), className: "Prenatal Barre", instructor: "Sofia Martín" },
+      { classId: 5, date: createHistoryDate(11), className: "Prenatal Barre", instructor: "Sofia Martín" },
     ],
   },
 ];
